@@ -53,6 +53,12 @@ disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST)
 # 128x64 display with hardware SPI:
 # disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST, dc=DC, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=8000000))
 
+if len(sys.argv) < 2:
+        print "showimage.py <imagefile>"
+        sys.exit(2)
+
+myimage = sys.argv[1]
+
 # Initialize library.
 disp.begin()
 
@@ -60,11 +66,6 @@ disp.begin()
 disp.clear()
 disp.display()
 
-if len(sys.argv) < 2:
-        print "showimage.py <imagefile>"
-        sys.exit(2)
-
-myimage = sys.argv[1]
 
 # load  image, resize it, and convert to 1 bit color.
 image = Image.open(myimage).resize((disp.width, disp.height), Image.ANTIALIAS).convert('1')
