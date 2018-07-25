@@ -85,7 +85,7 @@ while 1:
     # Draw the star (if on screen)
 
     if 0 <= x < width and 0 <= y < height:
-                draw.point((x,y),fill=1)
+                image.putpixel((x,y),1)
 
  disp.image(image)
  disp.display()
